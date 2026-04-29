@@ -1,45 +1,29 @@
 ```
-# Dependencies
-node_modules/
+# Java/Maven build artifacts
+target/
+*.class
+*.jar
+*.war
+*.ear
 
-# Build artifacts
-dist/
-build/
-*.js.map
+# Maven-specific
+.mvn/
+mvn-status/
 
-# Logs and temp files
+# IDE files
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# Logs
 *.log
-*.tmp
 
 # Environment
 .env
 .env.local
 *.env.*
-
-# Editors
-.vscode/
-.idea/
-
-# Python
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-
-# Coverage
-coverage/
-htmlcov/
-.coverage
-
-# Testing
-.pytest_cache/
-.mypy_cache/
-
-# Distribution / packaging
-.Python
-*.so
-*.egg-info/
-.eggs/
 
 # OS generated files
 .DS_Store
