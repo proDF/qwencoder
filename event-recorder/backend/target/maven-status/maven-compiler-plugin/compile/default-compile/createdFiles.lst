@@ -1,0 +1,9 @@
+com/eventrecorder/config/MyMetaObjectHandler.class
+com/eventrecorder/entity/Event.class
+com/eventrecorder/config/JacksonConfig.class
+com/eventrecorder/config/CorsConfig.class
+com/eventrecorder/config/CorsConfig$1.class
+com/eventrecorder/repository/EventMapper.class
+com/eventrecorder/EventRecorderApplication.class
+com/eventrecorder/controller/EventController.class
+com/eventrecorder/service/EventService.class

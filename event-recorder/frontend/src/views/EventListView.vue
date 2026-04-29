@@ -206,7 +206,9 @@ const resetFilters = () => {
   selectedMonth.value = null
 }
 
-const viewEvent = (id) => {
+const viewEvent = (row) => {
+  // 兼容两种情况：传入的是 row 对象或 id
+  const id = typeof row === 'object' ? row.id : row
   router.push(`/events/${id}`)
 }
 
