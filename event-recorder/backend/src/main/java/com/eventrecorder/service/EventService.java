@@ -1,7 +1,7 @@
 package com.eventrecorder.service;
 
 import com.eventrecorder.entity.Event;
-import com.eventrecorder.repository.EventRepository;
+import com.eventrecorder.repository.EventMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,49 +13,54 @@ import java.util.Optional;
 public class EventService {
     
     @Autowired
-    private EventRepository eventRepository;
+    private EventMapper eventMapper;
     
     public List<Event> getAllEvents() {
-        return eventRepository.findAll();
+        return eventMapper.selectList(null);
     }
     
     public Optional<Event> getEventById(Long id) {
-        return eventRepository.findById(id);
+        return Optional.ofNullable(eventMapper.selectById(id));
     }
     
     public Event createEvent(Event event) {
-        return eventRepository.save(event);
+        eventMapper.insert(event);
+        return event;
     }
     
     public Event updateEvent(Long id, Event eventDetails) {
-        Event event = eventRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Event not found with id: " + id));
+        Event event = eventMapper.selectById(id);
+        if (event == null) {
+            throw new RuntimeException("Event not found with id: " + id);
+        }
         
         event.setTitle(eventDetails.getTitle());
         event.setContent(eventDetails.getContent());
         event.setCategory(eventDetails.getCategory());
         event.setEventDate(eventDetails.getEventDate());
         
-        return eventRepository.save(event);
+        eventMapper.updateById(event);
+        
+        return event;
     }
     
     public void deleteEvent(Long id) {
-        eventRepository.deleteById(id);
+        eventMapper.deleteById(id);
     }
     
     public List<Event> getEventsByMonth(int year, int month) {
-        return eventRepository.findByYearAndMonth(year, month);
+        return eventMapper.findByYearAndMonth(year, month);
     }
     
     public List<Event> getEventsByYear(int year) {
-        return eventRepository.findByYear(year);
+        return eventMapper.findByYear(year);
     }
     
     public List<Event> searchEvents(String keyword) {
-        return eventRepository.findByTitleContainingOrContentContaining(keyword, keyword);
+        return eventMapper.findByTitleContainingOrContentContaining(keyword, keyword);
     }
     
     public List<Event> getEventsByDateRange(LocalDateTime startDate, LocalDateTime endDate) {
-        return eventRepository.findByEventDateBetween(startDate, endDate);
+        return eventMapper.findByEventDateBetween(startDate, endDate);
     }
 }

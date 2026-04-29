@@ -1,0 +1,7 @@
+/workspace/event-recorder/backend/src/main/java/com/eventrecorder/controller/EventController.java
+/workspace/event-recorder/backend/src/main/java/com/eventrecorder/service/EventService.java
+/workspace/event-recorder/backend/src/main/java/com/eventrecorder/repository/EventMapper.java
+/workspace/event-recorder/backend/src/main/java/com/eventrecorder/config/CorsConfig.java
+/workspace/event-recorder/backend/src/main/java/com/eventrecorder/entity/Event.java
+/workspace/event-recorder/backend/src/main/java/com/eventrecorder/EventRecorderApplication.java
+/workspace/event-recorder/backend/src/main/java/com/eventrecorder/config/JacksonConfig.java

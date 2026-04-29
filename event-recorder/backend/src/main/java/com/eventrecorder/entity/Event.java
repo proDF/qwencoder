@@ -1,49 +1,40 @@
 package com.eventrecorder.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.FieldFill;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "events")
+@TableName("events")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Event {
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @TableId(type = IdType.AUTO)
     private Long id;
     
-    @Column(nullable = false, length = 500)
+    @TableField
     private String title;
     
-    @Column(columnDefinition = "TEXT")
+    @TableField
     private String content;
     
-    @Column(length = 100)
+    @TableField
     private String category;
     
-    @Column(nullable = false)
+    @TableField
     private LocalDateTime eventDate;
     
-    @Column(nullable = false)
+    @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createdAt;
     
-    @Column(nullable = false)
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updatedAt;
-    
-    @PrePersist
-    protected void onCreate() {
-        createdAt = LocalDateTime.now();
-        updatedAt = LocalDateTime.now();
-    }
-    
-    @PreUpdate
-    protected void onUpdate() {
-        updatedAt = LocalDateTime.now();
-    }
 }
