@@ -4,13 +4,13 @@
 *.o
 *.obj
 *.out
-*.dll
-*.so
-*.a
+build/
+target/
 
 # Dependencies
-target/
 .gradle/
+lib/
+jars/
 
 # Logs and temp files
 *.log
@@ -20,6 +20,9 @@ target/
 # Editors
 .vscode/
 .idea/
+*.iml
+*.ipr
+*.iws
 
 # Environment
 .env
@@ -31,9 +34,13 @@ coverage/
 htmlcov/
 .coverage
 
-# Package manager caches
+# Package manager
 node_modules/
-__pycache__/
-.mypy_cache/
-.pytest_cache/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# System files
+.DS_Store
+Thumbs.db
 ```
